@@ -1,0 +1,9 @@
+//match hospital names in case insensitive.) Mass General Hospital, Children's hospital, Superman Memorial Regional Medical Center
+//max length of 6 tokens to prevent runaway matching
+//may want to add in more hospital matching regex for better classification?
+#HOSPITAL_1
+(?i)((Hospital)|(hosp)|(center)|(centre)|(cntr)|(ctr)|(clinic)|(institute))
+
+//matches memorial, regional, health, district, rehab, rehabilitation, gen, general , community, university
+#HOSPITAL_2
+(?i)((MEMORIAL)|(COUNTY)|(REGIONAL)|(MEDICAL)|(HEALTH)|(DISTRICT)|(REHAB(ILITATION)?)|(GEN(ERAL)?)|(COMMUNITY)|(UNIVERSITY))

@@ -1,0 +1,2 @@
+graft feature_service/resources/files
+prune feature_service/tests

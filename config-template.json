@@ -1,0 +1,17 @@
+{
+  "MDL_COMN_APPLICATION_NAME": "Feature Service",
+  "MDL_FEAT_LOCAL_CTAKES": false,
+  "MDL_FEAT_UMLS_HOST": "https://ctakes-dev-nlp-ci.mdl-dev.in",
+  "MDL_FEAT_UMLS_REQUEST_MODE": false,
+  "MDL_FEAT_NLP_CACHE": ".nlp_cache",
+  "MDL_FEAT_NLP_CACHE_ENABLE": false,
+  "MDL_FEAT_NLP_USERNAME": "",
+  "MDL_FEAT_NLP_PASSWORD": "",
+  "MDL_FEAT_NPI_HOST": "",
+  "MDL_FEAT_SVC_HOST": "0.0.0.0",
+  "MDL_FEAT_SVC_PORT": 8081,
+  "MDL_FEAT_DATA_ROOT": "",
+  "MDL_FEAT_PRELOAD": true,
+  "MDL_FEAT_USE_STORAGE_SVC": true,
+  "MDL_FEAT_APM_SERVICE_NAME": "Text2phenotype Feature Service"
+}

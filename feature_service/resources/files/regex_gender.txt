@@ -1,0 +1,22 @@
+//matches gentlewoman, gentleman, female, woman, man, male
+#GENDER1
+(?i)\W(\bgentle|\b)(FEM|WOM|M)A(LE|N)\b
+
+//matches M or F or m or f single characters
+#GENDER2
+\s[MmFf]\s
+
+#GENDER3
+\b(girl|boy)\b
+
+#NON_BINARY
+(?i)non-binary
+
+#TRANSGENDER
+(?i)transgender-(fe)?male
+
+#OTHER
+(?i)other
+
+#NON_DISCLOSE
+(?i)non-disclose

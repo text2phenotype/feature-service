@@ -1,0 +1,82 @@
+//To take out date of the form yyyy/m/d or yyyy/mm/dd or yyyy/mm/d or yyyy/m/dd
+//
+#DATE
+\d{4}[-\.\/][0-3]?[0-9][-\.\/][0-3]?[0-9]
+
+// mm/dd/yy
+//
+#DATE1
+((0?[13578]|10|12)(-|\/)((0[0-9])|([12])([0-9]?)|(3[01]?))(-|\/)((\d{4})|(\d{2}))|(0?[2469]|11)(-|\/)((0[0-9])|([12])([0-9]?)|(3[0]?))(-|\/)((\d{4}|\d{2})))
+
+//take out dates of the form mm/yyyy and m/yyyy and m/yy and mm/yy
+//
+#DATE2
+[0-1]?[0-9]\/(\d{4}|\d{2})
+
+// take out dates of the form MM dd, yyyy format from Jan 1, 1600 to Dec 31, 9999.
+//
+#DATE5
+(?:(((Jan(uary)?|Ma(r(ch)?|y)|Jul(y)?|Aug(ust)?|Oct(ober)?|Dec(ember)?)\ 31)|((Jan(uary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sept|Nov|Dec)(ember)?)\ (0?[1-9]|([12]\d)|30))|(Feb(ruary)?\ (0?[1-9]|1\d|2[0-8]|(29(?=,\ ((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))))\,\ ((1[6-9]|[2-9]\d)\d{2}))
+
+// date 5 but in format dd mon, yyyy
+//
+#DATE6
+(31 (Jan(uary)?|Ma(r(ch)?|y)|Jul(y)?|Aug(ust)?|Oct(ober)?|Dec(ember)?))|((0?[1-9])|([12]\d)|30) ((Jan|Febr?)(uary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly)?|(ne?))|Aug(ust)?|Oct(ober)?|(Sept|Nov|Dec)(ember)?)(((,? )|\sof\s)\d{4})?
+
+// MM dd
+//
+#DATE7
+((?:J(anuary|u(ne|ly))|February|Ma(rch|y)|A(pril|ugust)|(((Sept|Nov|Dec)em)|Octo)ber)|(?:j(anuary|u(ne|ly))|february|ma(rch|y)|a(pril|ugust)|(((sept|nov|dec)em)|octo)ber)|(?:(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))|(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)))( |\,)(\d{2}|\d)
+
+// ex: 8/4/93
+//
+#DATE12
+(((0?[1-9]|[12]\d|3[01])[\.\-\/](0?[13578]|1[02])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|((0?[1-9]|[12]\d|30)[\.\-\/](0?[13456789]|1[012])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|((0?[1-9]|1\d|2[0-8])[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|(29[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00|[048])))((\.|,))*
+
+//ex August 1995
+//
+#DATE13
+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)((\,*\s\s*)|\s+of\s+)(\d{4}|\d{2})|(January|February|March|April|May|June|July|August|September|October|November|December)((\,*\s\s*)|\s+of\s+)(\d{4}|\d{2})
+
+// ex: 2nd of November
+//
+#DATE16
+((\d+(st|nd|rd|th)))((\,*|\s|\s+)|(\s+of\s+))(January|February|March|April|May|June|July|August|September|October|November|December)|((\d+(st|nd|rd|th)))((\,*|\s|\s+)|(\s+of\s+))(january|february|march|april|may|june|july|august|september|october|november|december)|((\d+(st|nd|rd|th)))((\,*|\s|\s+)|(\s+of\s+))(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)|((\d+(st|nd|rd|th)))((\,*|\s|\s+)|(\s+of\s+))(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)
+
+// ex: ii-05-99
+//
+//#DATE17
+//([0-9lL]+?)[-,\/]([0-9iL]+?)[-,\/]([0-9iL]+?){2,4}
+
+// dd/yy
+#DATE21
+^((0[1-9])|(1[0-2])|\d)/\d{2}$
+
+// dd/mm
+//
+#DATE22
+^\d{1,2}\/(1[012]|[1-9])$
+
+//(regexp ) Take out any dates in the format M/D/YY , M/D/YYYY, mm/dd/yyyy , mm/dd/yy , dd/mm/yy ,dd/mm/yyyy.The separator can be any of the following characters : ".","/","-"
+//
+#DATE_SEPARATORS
+[^a-z^A-Z^0-9][0-3]?[0-9][-\./][0-3]?[0-9][-\./][0-9]{2,4}[^a-z^A-Z^%]+
+
+//take out any year of the form 19-- or 20-- or mispelled "1" for "l"
+//
+#YEAR_CENTURY
+(19|20|l9)[0-9]{2}
+
+// Single Month
+//
+#MONTH
+((January|February|March|April|June|July|August|September|October|November|December)|(january|february|march|april|june|july|august|september|october|november|december)|(Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)|(jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)|(JANUARY|FEBRUARY|MARCH|APRIL|MAY|JUNE|JULY|AUGUST|SEPTEMBER|OCTOBER|NOVEMBER|DECEMBER))\b
+
+//format date in the format: 'on the 22nd', 'on the 31st', etc... (will ignore the tokens 'on the')
+#DATE_23
+(?i)((?<=\bon the )|(?<=\bonthe )|(?<=\bonthe)|(?<=\bon the))\d+(st|nd|rd|th)
+
+//FORMAT for TIME
+#TIME_HOURS_MINIUTES
+(([01]\d|2[0-3]):([0-5]\d)|24:00)(\s{0,10}[AP]M)?
+

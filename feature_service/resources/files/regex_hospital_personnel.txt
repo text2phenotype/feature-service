@@ -1,0 +1,20 @@
+#MD
+(?i)\bMD\b
+
+#SURGEON
+(?i)SUR((GE)|(EG))ON(\(S\))?
+
+#ASST
+(?i)(ASST|ASSISTANT(\(S\)?)?)
+
+#PA
+(?i)\bp(hysicians?)?[\s \.]?a(ssistant)?\b
+
+#RN
+(([Rr]egistered)?[\s \.]?([nN]urse))|(\bRN\b)
+
+#DOCTOR
+(?i)d(octo)?rs?[\.,]?
+
+#TECH
+(TECHNOLOGIST)(:)

@@ -1,0 +1,19 @@
+//FORMAT1 for ICD-9_CODE
+#ICD-9_1
+\b[0-9]{2,3}\.[0-9]{1,2}\b
+
+//FORMAT2 for ICD-9_CODE
+#ICD-9_2
+(ICD-[0-9]{2,3}.[0-9]{1,2})
+
+//FORMAT1 for ICD-10_CODE
+#ICD-10_1
+[A-Z][0-9]{1,2}\.?[0-9]{0,3}
+
+//FORMAT2 for ICD-10_CODE
+#ICD-10_2
+(ICD10-[A-Z][0-9]{1,2}[\.\- +][0-9]{0,3})
+
+// Contains ICD
+#ICD
+ICD

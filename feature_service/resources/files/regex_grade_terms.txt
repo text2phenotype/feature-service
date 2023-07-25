@@ -1,0 +1,12 @@
+//standard tumor grade terms
+#GRADE
+(?i)\b(high|low|intermediate)\W+grade\b
+
+#DEGREE
+(?i)\b(low|high|intermediate|poor(ly)?|well|moderate(ly)?)\b
+
+#DIFFERENTIATE
+(?i)\b(well|poor(ly)?|moderate)\W+differentiat
+
+#UNDIFFERENTIATED
+(?i)undifferentiated

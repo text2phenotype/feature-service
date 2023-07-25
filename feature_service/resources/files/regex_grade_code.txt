@@ -1,0 +1,7 @@
+//G: the grade of the cancer cells (i.e. they are "low grade" if they appear similar to normal cells,
+//   and "high grade" if they appear poorly differentiated)
+#G
+\b[cpyrauP]*?G\s*([1-4]|(I{1,3}V?))\b
+
+#G_OCR_ERROR
+\b[cpyrauP]*?G\s*[il]\b

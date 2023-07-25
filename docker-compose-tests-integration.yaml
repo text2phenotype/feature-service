@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  feature-service:
+    # build: '.'
+    image: "docker.text2phenotype.com/feature-service:${TAG_RANDOM_SEED}"
+    command: bin/docker-test-integration.sh
+    networks:
+      feature-service:
+        aliases:
+          - feature-service
+
+networks:
+  feature-service:

@@ -1,0 +1,20 @@
+#URL1
+[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)
+//doesnt care about http or https and wont match that part
+
+#URL2
+https?://[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)
+//does require https other than that same as url 1
+
+#URL3
+(?i)\.(com|net|gov|info|edu|org)
+//.com, .net, .edu, .gov, .org
+
+// matches non strict urls of form /al/sdfa #note this will be very greedy and match any word with a / in it, avoids spaces
+#URL4
+(/[\w@:%\+.~#?&=]+)+
+
+//matches IP address except of the form [1200.5.4.3], [abc.def.ghi.jkl], [255.foo.bar.1] .Taken from regexlib.com
+//
+#IP
+(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])

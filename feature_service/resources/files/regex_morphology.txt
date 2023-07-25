@@ -1,0 +1,9 @@
+//ICD-O morphology regexes
+//https://apps.who.int/iris/bitstream/handle/10665/96612/9789241548496_eng.pdf
+//Morphology terms have five-digit codes ranging  from  8000/0  to  9992/3.
+//Behavior codes restricted to 1,2,3,6,9 (malignant types)
+#EXPECTED_FORMAT
+\b[89]\d{3}/[12369]\b
+
+#OCR_ERRORS
+\b[89][\dI]{3}/[I12369]\b

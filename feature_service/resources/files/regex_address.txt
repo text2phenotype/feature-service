@@ -1,0 +1,45 @@
+#STREET_TYPE
+(?i)\b(STREET|ST|AVENUE|AVE|BLVD|BOULEVARD|SUITE|PARK|DRIVE|DR|LANE|LNE|LN|WAY|PKY|PARKWAY|ROUTE|RT|ROAD|RD|PASS|SQUARE|SQ|PLAZA|LINK|GARDENS|CIRCLE|ROW|TURN|HWY|HIGHWAY|CIR|COURT|CROSSING|TRAIL|RUN|PIKE|TERRACE|PLACE|PPL|PL|LOOP|PARADE|ALLEY|BEND)\b
+
+#CARDINALS
+(?i)\b(N(orth)?|S(outh)?|E(ast)?|W(est)|NE|SE|NW|SW)\b
+
+//ex: PO BOX 8004
+//
+#POBOX
+(?i)[PO\.]+\W[BOX\.]+\W\d+
+
+// ROOM 680
+//
+#ROOM
+(?i)(ROOM)\W*\d+
+
+//match 4th floor, 2nd fl, etc...
+#LOCATION_FLOOR_1
+(?i)\b(\d{1,3})((nd)|(rd)|(st)|(th))\s+(floor|flr|fl)\b
+
+//match floor 1, floor 4 ect
+#LOCATION_FLOOR_2
+(?i)(floor|flr|fl)(\W)*(\d{1,3})\b
+
+#ADDRESS2
+[^a-z^A-Z][0-9]{1,6}(\w+)?\s(\w+\s)+([sS]t|[sS]treet|[aA]venue|[aA]ve|[Bb]lvd|[bB]oulevard|[sS]uite|[pP]ark|[dD]rive|[dD]r|[lL]ane|[lL]n|[Ww]ay|[Pp]ky|[pP]arkway|[Rr]oute|rt|RT|Rt|[rR]oad|[rR]d|[pP]ass|Square|Sq|[Pp]laza|[lL]ink|[bB]end|[gG]ardens|[cC]ircle|[rR]ow|[tT]urn|[hH]wy|[hH]ighway|[cC]ir|[cC]ourt|[cC]rossing|[tT]rail|[rR]un|[pP]ike|[tT]errace|Place|[pP]l|[lL]oop|[pP]arade|[aA]lley)[^A-Za-z]?(\.)?[\s,]?([A-Z][a-zA-Z]+[^a-z^A-Z^0-9]+){1,5}((\d{5}(-)\d{4})|(\d{5}))?[^a-z^A-Z^0-9]?
+
+// ex: 123 Anywhere Dr. Somewhere, ST 55789
+//
+#ADDRESS4
+[ \w]{3,}(\w+\.)?([ \w]{,30}\#\d+)?(\r\n| )[ \w]{3,},\s?[A-Za-z]{2}\s\d{5}(-\d{4})?
+//ex:SALEM OR  97310-1020
+//
+#ADDRESS5
+(?i)\w+\s{0,10}(,)?\s+(?:A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])\s+\d{5}(-\d{4})?
+
+//ex:2045 Fake Name South West STREET
+//
+#ADDRESS6
+(?i)\d+(\s+\w+){1,6}\s+(STREET|ST|AVENUE|AVE|BLVD|BOULEVARD|SUITE|PARK|DRIVE|DR|LNE|LN|WAY|PKY|PARKWAY|ROUTE|RT|ROAD|RD|PASS|SQUARE|SQ|PLAZA|LINK|GARDENS|CIRCLE|ROW|TURN|HWY|HIGHWAY|CIR|COURT|CROSSING|TRAIL|RUN|PIKE|TERRACE|PLACE|PPL|LOOP|PARADE|ALLEY)(\.)*\s+(North|South|East|West|NE|SE|NW|SW){0,2}
+
+// ex:501 N. Graham, Suite 500
+//
+#ADDRESS7
+(?i)(\d{1,5}\W+)((\w{1,15}\W+){1,4})(STREET|ST|AVENUE|AVE|BLVD|BOULEVARD|SUITE|PARK|DRIVE|DR|LNE|LN|WAY|PKY|PARKWAY|ROUTE|RT|ROAD|RD|PASS|SQUARE|SQ|PLAZA|LINK|GARDENS|CIRCLE|ROW|TURN|HWY|HIGHWAY|CIR|COURT|CROSSING|TRAIL|RUN|PIKE|TERRACE|PLACE|PPL|LOOP|PARADE|ALLEY)\W(\W\d+)?

@@ -1,0 +1,160 @@
+openapi: 3.0.0
+info:
+  description: This service handles data for biomed
+  version: 0.0.0
+  title: Text2phenotype Feature Service
+tags:
+  - name: Feature Set
+  - name: Status
+  - name: Jobs
+  - name: Annotate Label
+paths:
+  /feature_set/annotatevectorize:
+    post:
+      tags:
+        - Feature Set
+      summary: Annotate the provided clinical text according to latest biomed features
+      operationId: annotate_vectorize
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureServiceRequest'
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Unsuccessful operation
+      x-openapi-router-controller: feature_service.controllers.feature_set_controller
+  /feature_set/annotate:
+    post:
+      tags:
+        - Feature Set
+      summary: Annotate the provided clinical text according to latest biomed features
+      operationId: annotate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureServiceRequest'
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Unsuccessful operation
+      x-openapi-router-controller: feature_service.controllers.feature_set_controller
+  /feature_set/annotate_label_task:
+    post:
+      tags:
+        - Annotate Label
+      summary: Annotate/label a cohort of clinical texts according to latest biomed features
+      operationId: annotate_label_task
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureServiceRequest'
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Unsuccessful operation
+      x-openapi-router-controller: feature_service.controllers.jobs_controller
+  /feature_set/vectorize:
+    post:
+      tags:
+        - Feature Set
+      summary: Vectorize the provided tokens
+      operationId: vectorize
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureServiceRequest'
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Unsuccessful operation
+      x-openapi-router-controller: feature_service.controllers.feature_set_controller
+  /health/live:
+    get:
+      tags:
+        - Status
+      operationId: live
+      responses:
+        '200':
+          description: The service is alive
+        '500':
+          description: The service is not alive
+      x-openapi-router-controller: feature_service.controllers.status_controller
+  /health/ready:
+    get:
+      tags:
+        - Status
+      operationId: ready
+      responses:
+        '200':
+          description: The service is ready
+        '500':
+          description: The service is not ready
+      x-openapi-router-controller: feature_service.controllers.status_controller
+  /version:
+    get:
+      tags:
+        - Status
+      operationId: version
+      responses:
+        '200':
+          description: Version information
+        '500':
+          description: Unsuccessful operation
+      x-openapi-router-controller: feature_service.controllers.status_controller
+  /annotatelabel:
+    post:
+      tags:
+        - Jobs
+      summary: Given metadata, annotate and/or label data
+      operationId: annotate_label
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureServiceRequest'
+        description: Feature Request
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+
+        '400':
+          description: Unsuccessful operation
+      x-openapi-router-controller: feature_service.controllers.jobs_controller
+components:
+  requestBodies:
+    FeatureServiceRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FeatureServiceRequest'
+      required: true
+  schemas:
+    FeatureServiceRequest:
+      type: object
+      properties:
+        text:
+          type: string
+          nullable: true
+        features:
+          additionalProperties: true
+        tokens:
+          additionalProperties: true
+        tid:
+          type: string
+          nullable: true
+        binary_classifier:
+          type: boolean
+          nullable: true
+        metadata:
+          additionalProperties: true
+

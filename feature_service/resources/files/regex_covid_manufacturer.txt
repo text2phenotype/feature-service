@@ -1,0 +1,16 @@
+#LABORATORY_MANUFACTURURER
+\b(ait|aspirus reference|compass|clinical reference|ethos|bio-rad|diagnostic molecular|patients choice|acupath|ultimate dx|cormeum|specialty diagnostic|assurance scientific|csi|sandia national|sciencell research|utmg pathology|diatherix eurofins|rta|cirrusdx|wren|one health|diagnostic solutions|integrity|exact sciences|tide)\s{0,4}laborat
+
+
+#DIAGNOSTIC_MANUFACTURER
+\b(pro-lab|ipsum|altru|altona|boston heart|phosphorus|inform|biofire|privapath|warrior|solaris|genmark|gravity|fast track)\s{0,4}diagnostic
+
+#MANUFACTURER_ONE_WORD
+\b(genosensor|abbott|seegene|plexbio|centogene|vela|lumiradx|hologic|perkinelmer|cepheid|roche|biomeme|biocerna|diacarta|quest|orig3n|psomagen|biomerieux|precigenome|1drop|cdc|fluidigm|labgenomics|helix|korvalabs|healthquest|genematrix|chromacode|gnomegen|illumina|biocollections|jiangsu|luminex|biocore|solgent)\b
+
+#MANUFACTURER_BIOTECH
+\b(seasun|sherlock|zhuhai sinochips|quadrant|infinity|maccura|xiamen zeesan|applied|sd|atila|sansure|mesa|access|kogene|in|tbg)\s{0,5}bio
+
+#MANUFACTURER_OTHER
+\b(enzo life sciences|quidel rheonix|zymo research|opti medical systems|p23 labs|genetron health|neumodx molecular|kaiser permanente|lifehope labs|applied dna sciences|centers for disease control and prevention|avellino lab|express gene|fulgent therapeutics|cue health|trax management services|becton, dickinson & company|color genomics|gene by gene|eli lilly|diasorin molecular|access genetics|thermo fisher|omnipathology solutions medical|primer design|bgi genomics|osang healthcare|fosun pharma)\b
+

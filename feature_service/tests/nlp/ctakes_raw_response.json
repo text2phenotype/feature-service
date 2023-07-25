@@ -1,0 +1,124 @@
+{
+	"jira": "https://gettext2phenotype.atlassian.net/projects/BIOMED/versions/11243",
+	"user": "Mike Banos (mike.banos)",
+	"timestamp": "1561662734000",
+	"date": "2019-06-27",
+	"version": "Version 1.2.1 ECHO HepC",
+	"docId": "19d23766-398f-4efa-a08c-44ec06e349a6",
+	"dob": null,
+	"gender": null,
+	"age": null,
+	"content": [
+		{
+			"id": null,
+			"sentence": [
+				0,
+				17
+			],
+			"sectionOffset": [
+				0,
+				17
+			],
+			"text": [
+				"aminobenzoic acid",
+				0,
+				17
+			],
+			"sectionOid": "SIMPLE_SEGMENT",
+			"attributes": {
+				"polarity": "positive"
+			},
+			"aspect": "device",
+			"name": "MedicationMention",
+			"umlsConcepts": [
+				{
+					"cui": "C0000473",
+					"tui": [
+						"T109",
+						"T121",
+						"T127"
+					],
+					"preferredText": "4-Aminobenzoic Acid",
+					"sabConcepts": [
+						{
+							"codingScheme": "MSH",
+							"vocabConcepts": [
+								{
+									"code": "D010129",
+									"tty": [
+										"IN",
+										"SY"
+									]
+								}
+							]
+
+						},
+						{
+							"codingScheme": "SNOMEDCT_US",
+							"vocabConcepts": [
+								{
+									"code": "39707000",
+									"tty": [
+										"IN",
+										"SY"
+									]
+								},
+								{
+									"code": "373489001",
+									"tty": [
+										"IN",
+										"SY"
+									]
+								}
+							]
+
+						},
+						{
+							"codingScheme": "NCI",
+							"vocabConcepts": [
+								{
+									"code": "C61634",
+									"tty": [
+										"IN",
+										"SY"
+									]
+								}
+							]
+						},
+						{
+							"codingScheme": "MTH",
+							"vocabConcepts": [
+								{
+									"code": "U002135",
+									"tty": [
+										"IN",
+										"SY"
+									]
+								}
+							]
+						},
+						{
+							"codingScheme": "NDFRT",
+							"vocabConcepts": [
+								{
+									"code": "N0000006481",
+									"tty": [
+										"IN",
+										"SY"
+									]
+								},
+								{
+									"code": "N0000147349",
+									"tty": [
+										"IN",
+										"SY"
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

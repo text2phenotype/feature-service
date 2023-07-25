@@ -1,0 +1,153 @@
+---
+stages:
+  - suite-runner
+  - docker-push
+  - downstream
+  - manual-jobs
+
+default:
+  image: docker.text2phenotype.com/nlp-gitlab-builder:latest
+  tags:
+    - nlp
+
+variables:
+  DOCKER_GIT_REPO: "${CI_REPOSITORY_URL}"
+  DOCKER_HOST: tcp://dind:2375
+  DOCKER_REPO: "docker.text2phenotype.com"
+  DOCKER_TAG: "${CI_COMMIT_REF_NAME}\_${CI_COMMIT_SHORT_SHA}\_${CI_JOB_TIMESTAMP}"
+  DOCKER_TARGET_ORG: "docker.text2phenotype.com"
+  DOCKER_TLS_CERTDIR: ""
+  GIT_SUBMODULE_STRATEGY: normal
+  IMAGE_NAME: "${CI_PROJECT_NAME}"
+  INTEGRATION_TESTS_REPORT_FILE: "junit-report-integration.xml"
+  KUBERNETES_SERVICE_ACCOUNT_OVERWRITE: nlp-builder
+  PIP_CONFIG_FILE: "${CI_PROJECT_DIR}/bin/pip.conf"
+  RUN_TEST_SUITE: "none"
+  UNIT_TESTS_REPORT_FILE: "junit-report.xml"
+  WORKSPACE: "${CI_PROJECT_DIR}"
+
+.build-image-template: &build-image-template
+  stage: suite-runner
+  script:
+    # - docker info
+    - docker login "$DOCKER_REPO" -u "$DOCKER_REPO_USER" -p "$DOCKER_REPO_PASSWORD"
+    - cd ${WORKSPACE}
+    - ./bin/run-docker-build.sh
+
+build-image:
+  <<: *build-image-template
+  before_script:
+    - export DOCKER_SKIP_DEPLOY="true"
+  artifacts:
+    paths:
+    - .docker.metadata
+    expire_in: 1 day
+  only:
+    - merge_requests
+    - web
+
+push-image:
+  stage: docker-push
+  script:
+    - docker login "$DOCKER_REPO" -u "$DOCKER_REPO_USER" -p "$DOCKER_REPO_PASSWORD"
+    - cat .docker.metadata
+    - ./build-tools/bin/stage.push
+  only:
+    - merge_requests
+    - web
+
+build-merged-image:
+  <<: *build-image-template
+  only:
+    - dev
+    - master
+
+collect-resources:
+  stage: manual-jobs
+  script:
+    - docker login "$DOCKER_REPO" -u "$DOCKER_REPO_USER" -p "$DOCKER_REPO_PASSWORD"
+    - ./bin/collect-fs-resources.sh
+  when: manual
+
+unit-test:
+  before_script:
+    - BASE_URL=`echo ${CI_REPOSITORY_URL} | sed "s;\/*${CI_PROJECT_PATH}.*;;"`
+    - REPO_URL="${BASE_URL}/data-management/nlp/text2phenotype-py.git"
+    - REPO_DIR="${WORKSPACE}/../text2phenotype-py"
+    - rm -fr ${REPO_DIR}
+    - git clone --depth 1 -b ${CI_COMMIT_REF_NAME} ${REPO_URL} ${REPO_DIR} || git clone --depth 1 -b dev ${REPO_URL} ${REPO_DIR}
+    - cd ${REPO_DIR} && git describe --contains --all HEAD && cd -
+
+  stage: suite-runner
+  image: docker.text2phenotype.com/jenkins-image:latest
+  script:
+    - cd ${WORKSPACE}
+    - ./bin/local-test-unit.sh
+  artifacts:
+    when: always
+    reports:
+      junit: ${UNIT_TESTS_REPORT_FILE}
+  only:
+    - merge_requests
+    - web
+
+integration-test:
+  before_script:
+    - BASE_URL=`echo ${CI_REPOSITORY_URL} | sed "s;\/*${CI_PROJECT_PATH}.*;;"`
+    - REPO_URL="${BASE_URL}/data-management/nlp/text2phenotype-py.git"
+    - REPO_DIR="${WORKSPACE}/../text2phenotype-py"
+    - rm -fr ${REPO_DIR}
+    - git clone --depth 1 -b ${CI_COMMIT_REF_NAME} ${REPO_URL} ${REPO_DIR} || git clone --depth 1 -b dev ${REPO_URL} ${REPO_DIR}
+    - cd ${REPO_DIR} && git describe --contains --all HEAD && cd -
+
+  stage: suite-runner
+  image: docker.text2phenotype.com/jenkins-image:latest
+  script:
+    - cd ${WORKSPACE}
+    - ./bin/local-test-integration.sh
+  artifacts:
+    when: always
+    reports:
+      junit: ${INTEGRATION_TESTS_REPORT_FILE}
+  only:
+    - merge_requests
+    - web
+
+### Downsteam section
+build-sss:
+  stage: downstream
+  variables:
+    REPO_BRANCH: ${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}
+    SOURCE_REPO_NAME: feature-service
+  trigger:
+    project: data-management/nlp/sss
+    branch: dev
+    strategy: depend
+  only:
+    - merge_requests
+
+build-sss-merged-master:
+  stage: downstream
+  variables:
+    REPO_BRANCH: master
+    SOURCE_REPO_NAME: feature-service
+  trigger:
+    project: data-management/nlp/sss
+    branch: master
+    strategy: depend
+  only:
+    - master
+    - web
+
+build-sss-merged-dev:
+  stage: downstream
+  variables:
+    REPO_BRANCH: dev
+    SOURCE_REPO_NAME: feature-service
+  trigger:
+    project: data-management/nlp/sss
+    branch: dev
+    strategy: depend
+  only:
+    - dev
+    - web

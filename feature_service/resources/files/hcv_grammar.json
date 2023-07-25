@@ -1,0 +1,617 @@
+{
+    "DEMOGRAPHICS": {
+        "dob": {
+            "tui": "T079",
+            "sty": "Temporal Concept",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "DOB Date of Birth of Patient"
+        },
+        "gender": {
+            "tui": "T032",
+            "sty": "Organism Attribute",
+            "codingScheme": "HL7V3.0",
+            "text": "HL7 Administrative Gender",
+            "reference": "http://hl7.org/fhir/valueset-administrative-gender.html"
+        },
+        "ethnicity_hispanic_latino": {
+            "tui": "T098",
+            "sty": "Population Group",
+            "codingScheme": "CDC",
+            "text": "Race and Ethnicity:Hispanic or Latino",
+            "reference": "http://hl7.org/fhir/us/core/stu1/ValueSet-omb-race-category.html"
+        },
+        "race": {
+            "tui": "T098",
+            "sty": "Population Group",
+            "codingScheme": "CDC",
+            "text": "Race and Ethnicity: R5 codes",
+            "reference": "http://hl7.org/fhir/us/core/stu1/CodeSystem-cdcrec.html"
+        },
+        "insurance": {
+            "tui": "T058",
+            "sty": "Health Care Activity",
+            "codingScheme": "CSP",
+            "text": "Patient Health Insurance Type"
+        }
+    },
+    "ROUTE_OF_INFECTION": {
+        "injection_drug_user": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Current or former injection drug user (even once)",
+            "reference": "@drug_user"
+        },
+        "clotting_factor_concentrates": {
+            "tui": "T037",
+            "sty": "Injury or Poisoning",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Recipient of clotting factor concentrates made before 1987",
+            "reference": "http://www.bloodjournal.org/content/bloodjournal/81/7/1898.full.pdf?sso-checked=true"
+        },
+        "transfusion_or_transplant": {
+            "tui": "T037",
+            "sty": "Injury or Poisoning",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Blood transfusion or solid organ transplant before July 1992"
+        },
+        "needlestick_injury": {
+            "tui": "T037",
+            "sty": "Injury or Poisoning",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Needlestick injury in healthcare setting"
+        },
+        "mother_has_hepc": {
+            "tui": "T037",
+            "sty": "Injury or Poisoning",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Birth to an HCV-infected mother"
+        },
+        "sexual_partner_has_hepc": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Sex with an HCV infected person"
+        },
+        "sharing_contaminated_items": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Sharing contaminated personal items, such as razors or tooth brushes with an HCV infected person"
+        },
+        "non_professional_tattoo": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Non-professional tattoo"
+        },
+        "unknown_transmission_route": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Unknown route of HCV Transmission"
+        }
+    },
+    "HCV": {
+        "hcv_diagnosis": {
+            "tui": "T005",
+            "sty": "Virus",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "HCV: Hepatitis C Virus diagnosis",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-hepatitisC-antibody.asp"
+        },
+        "hcv_prev_treatment": {
+            "tui": "T061",
+            "sty": "Therapeutic or Preventive Procedure",
+            "codingScheme": "MEDCIN",
+            "text": "Previous HCV Treament"
+        },
+        "hcv_prev_treatment_drugs": {
+            "tui": "T121",
+            "sty": "Pharmacologic Substance",
+            "codingScheme": "NDFRT",
+            "text": "Previous HCV Treament:Drug Regimen",
+            "reference": "https://www.healthline.com/health/hepatitis-c/full-medication-list#7"
+        }
+    },
+    "CIRRHOSIS": {
+        "cirrhosis_diagnosis": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Cirrhosis: diagnosis of liver tissue becoming scarred, resulting in loss of liver function",
+            "reference": "https://www.hepatitis.va.gov/patient/complications/cirrhosis/index.asp"
+        },
+        "cirrhosis_diagnosis_ascites": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "any evidence of decompensation? Ascites: Fluid in the belly. An abnormal accumulation of serous fluid in the abdominal cavity",
+            "reference": "https://www.hepatitis.va.gov/patient/complications/cirrhosis/ascites.asp"
+        },
+        "cirrhosis_diagnosis_encephalopathy": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "any evidence of decompensation? Hepatic Encephalopathy: Brain Disease, Loss of Brain Function (confusion)",
+            "reference": "https://www.hepatitis.va.gov/patient/complications/cirrhosis/encephalopathy.asp"
+        },
+        "cirrhosis_diagnosis_variceal_bleed": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "any evidence of decompensation? Variceal Blead : blood pressure increases in the portal vein system, block blood flow through the liver",
+            "reference": "https://www.hepatitis.va.gov/patient/complications/cirrhosis/bleeding-varices.asp"
+        }
+    },
+    "DIAGNOSIS_LIVER_HISTORY": {
+        "liver_biopsy": {
+            "tui": "T060",
+            "sty": "Diagnostic Procedure",
+            "codingScheme": "CPT",
+            "text": "Liver Biopsy: tissue sample from the liver",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/biopsy-index.asp"
+        },
+        "liver_biopsy_results": {
+            "tui": "T033",
+            "sty": "Finding",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Liver Biopsy: findings/results of the biopsy, such as liver cancer (HCC Hepatocellular Carcinoma)"
+        },
+        "hepatocelular_carcinoma": {
+            "tui": "T191",
+            "sty": "Neoplastic Process",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Hepatocellular Carcinoma: liver cancer, most common type, can be caused by chronic liver disease, usually HCB/HCV",
+            "reference": "https://www.hepatitis.va.gov/patient/complications/liver-cancer/index.asp"
+        }
+    },
+    "DIAGNOSIS_OTHER": {
+        "asthma": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Asthma"
+        },
+        "auto_immune_disease": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Auto Immune Disease"
+        },
+        "brain_injury": {
+            "tui": "T037",
+            "sty": "Injury or Poisoning",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Brain Injury (including Hepatic Encephalopathy)"
+        },
+        "cancer": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "CCS_10",
+            "text": "Cancer: Multi-level CCS, Diagnosis, Neoplasms(C0027651)",
+            "reference": "https://nlm.nih.gov/research/umls/sourcereleasedocs/current/CCS_10"
+        },
+        "chronic_pain": {
+            "tui": "T184",
+            "sty": "Sign or Symptom",
+            "codingScheme": "CHV",
+            "text": "Chronic Pain",
+            "reference": "https://www.hepatitis.va.gov/patient/daily/pain/index.asp"
+        },
+        "copd": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "COPD (chronic obstructive pulmonary disease) makes it hard for you to breathe. The two main types are chronic bronchitis and emphysema. The main cause of COPD is long-term exposure to substances that irritate and damage the lungs. This is usually cigarette smoke. Air pollution, chemical fumes, or dust can also cause it."
+        },
+        "coronary_artery_disease": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "CAD happens when the arteries that supply blood to heart muscle become hardened and narrowed. This is due to the buildup of cholesterol and other material, called plaque, on their inner walls. This buildup is called atherosclerosis. As it grows, less blood can flow through the arteries. As a result, the heart muscle cannot get the blood or oxygen it needs. This can lead to chest pain (angina) or a heart attack. Most heart attacks happen when a blood clot suddenly cuts off the heart blood supply, causing permanent heart damage."
+        },
+        "cryoglobulinemia": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "condition characterized by the presence of abnormal quantities of CRYOGLOBULINS in the blood. Upon cold exposure, these abnormal proteins precipitate into the microvasculature leading to restricted blood flow in the exposed areas."
+        },
+        "diabetes_mellitus": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Diabetes Mellitus: Type 2 common"
+        },
+        "hep_b_chronic": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Chronic Hepatitis B",
+            "reference": "https://www.hepatitis.va.gov/patient/hbv/index.asp"
+        },
+        "hiv": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "HIV co-infection",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/coinfection-index.asp"
+        },
+        "hypertension": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Hypertension (high blood pressure)"
+        },
+        "peripheral_neuropathy": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Peripheral Neuropathy: Symptoms often start gradually, and then worsen. Numbness,pain,burning or tingling,muscle weakness, and sensitivity to touch."
+        },
+        "renal_insufficiency": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Renal Insufficiency (kidney failure)"
+        },
+        "seizure_disorder": {
+            "tui": "T047",
+            "sty": "Disease or Syndrome",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Seizure Disorder (epilepsy)"
+        }
+    },
+    "HEPATITIS_VACCINATIONS": {
+        "hep_a_immunity": {
+            "tui": "T129",
+            "sty": "Immunologic Factor",
+            "codingScheme": "CVX",
+            "text": "Is patient immune to hepatitis A?",
+            "reference": "http://hl7.org/fhir/cvx.html"
+        },
+        "hep_b_immunity": {
+            "tui": "T129",
+            "sty": "Immunologic Factor",
+            "codingScheme": "CVX",
+            "text": "Is patient immune to hepatitis B?",
+            "reference": "http://hl7.org/fhir/cvx.html"
+        }
+    },
+    "PSYCHIATRIC_DIAGNOSES": {
+        "depression": {
+            "tui": "T048",
+            "sty": "Mental or Behavioral Dysfunction",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Depression: unpleasant, but not necessarily irrational or pathological, mood state characterized by sadness, despair, or discouragement; may also involve low self-esteem, social withdrawal, and somatic symptoms such as eating and sleep disturbance."
+        },
+        "anxiety": {
+            "tui": "T048",
+            "sty": "Mental or Behavioral Dysfunction",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Anxiety: General term for the group of specific, anxiety-related, avoidance- prone disorders listed as NTs."
+        },
+        "anxiety_meds": {
+            "tui": "T121",
+            "sty": "Pharmacologic Substance",
+            "codingScheme": "RXNORM",
+            "text": "If yes, is patient on medication for anxiety?"
+        },
+        "mania_hypomania": {
+            "tui": "T048",
+            "sty": "Mental or Behavioral Dysfunction",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Mania/Hypomania"
+        },
+        "mania_hypomania_meds": {
+            "tui": "T121",
+            "sty": "Pharmacologic Substance",
+            "codingScheme": "RXNORM",
+            "text": "Mania/Hypomania: If yes, is patient on medication for Mania/Hypomania?"
+        }
+    },
+    "SURVEY_SCORES": {
+        "phq_9_score": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "MEDCIN",
+            "text": "PHQ-9 Score: Patient Health Questionnaire (PHQ-9) is designed specifically for mood/depression scoring each of the 9 DSM-IV criteria"
+        }
+    },
+    "SUBSTANCE_USE_HISTORY": {
+        "alcohol_user": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Does patient currently drink alcohol?"
+        },
+        "alcohol_problem": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Has the patient ever had a drinking problem?",
+            "reference": "@alcohol_user"
+        },
+        "drug_user": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Does patient currently use drugs other than alcohol?"
+        },
+        "drug_user_opiates": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Opiates",
+            "reference": "@drug_user"
+        },
+        "drug_user_stimulants": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Simulants",
+            "reference": "@drug_user"
+        },
+        "drug_user_benzos": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Benzodiazepines",
+            "reference": "@drug_user"
+        },
+        "drug_user_weed": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Marijuana",
+            "reference": "@drug_user"
+        },
+        "cigarette_smoker": {
+            "tui": "T053",
+            "sty": "Behavior",
+            "codingScheme": "SNOMEDCT_US",
+            "text": "Smoking Status",
+            "reference": "@drug_user"
+        }
+    },
+    "MEDICATIONS": {
+        "medication_statement": {
+            "tui": "T121",
+            "sty": "Pharmacologic Substance",
+            "codingScheme": "RXNORM",
+            "text": "Current Medications"
+        }
+    },
+    "BMI": {
+        "height": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "MEDCIN",
+            "text": "Height: (measurement)",
+            "reference": "@bmi"
+        },
+        "weight": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "MEDCIN",
+            "text": "Weight: (measurement)",
+            "reference": "@bmi"
+        },
+        "bmi": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "MEDCIN",
+            "text": "BMI: Body Mass Index (your weight in KG over your height squared CM )"
+        }
+    },
+    "LABORATORY_PANELS": {
+        "panel_cbc_blood": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "CBC Lab Panel (C0009555): RBC(red blood cells), WBC(white blood cells), and platelets",
+            "reference": "@lab_wbc @lab_anc @lab_hgb @lab_hct @lab_platlets"
+        },
+        "panel_bmp_metabolic": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "BMP Basic Metabolic Panel: Creatinine, Glucose, BUN, Calcium, CO2, Chloride, Potassium, Sodium",
+            "reference": "@lab_creatinine @lab_glucose"
+        },
+        "panel_cmp_metabolic": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "CMP Comprehensive (+BMP) : Creatinine, Glucose, Albumin, PT(Protein Total), ALT/AST/ALP(Alk Phos), Bilirubin",
+            "reference": "@lab_creatinine @lab_glucose @lab_total_prot @lab_albumin @lab_alt @lab_ast  @lab_alk_phos"
+        },
+        "panel_lft_liver": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "LFT Liver Function (C0023901): Albumin, PT,ALT/AST/ALP, Bilirubin, *Prothrombin time*, *INR*",
+            "reference": "@lab_total_prot @lab_albumin @lab_albumin @lab_alt @lab_ast  @lab_alk_phos @lab_protime_total @lab_inr"
+        },
+        "lab_wbc": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "WBC: White Blood Cell count. This test measures the total number of white blood cells (WBCs). There are 5 main types of WBCs: neutrophils, eosinophils, basophils, monocytes, and lymphocytes. Each type does a slightly different job. All of them help fight infection.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-WBC.asp"
+        },
+        "lab_anc": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "ANC: Absolute Neutrophil Count. Neutrophils play a key role in inflammation, formation of pus, and destruction of bacteria",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-neutrophils.asp"
+        },
+        "lab_hgb": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "HBG: Hemoglobin A1C (The hemoglobin level is related to the hematocrit, red blood cell counts)",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-hemoglobin.asp"
+        },
+        "lab_hct": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "HCT: Hematocrit (red blood cell count)",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-hematocrit.asp"
+        },
+        "lab_platelets": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Platlets: count of platlets per cubic millimeter (cmm) of whole blood. For patients with hepatitis C, having a low blood platelet count is a frequent complication associated with advanced disease.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-platelets.asp"
+        },
+        "lab_creatinine": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Creatinine is a waste product in your blood. It comes from protein in your diet and the normal breakdown of muscles of your body. Creatinine is removed from blood by the kidneys and then passes out of the body in your urine. If you have kidney disease, the level of creatinine in your blood increases.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-creatinine.asp"
+        },
+        "lab_glucose": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "A type of sugar; the chief source of energy for living organisms. Measurement of the glucose in a biological specimen.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-glucose.asp"
+        },
+        "lab_protime": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Protime: Prothrombin time assay. (Prothrombin is a protein made by the liver. Prothrombin helps blood to make normal clots. The \"prothrombin time\" (PT) is one way of measuring how long it takes blood to form a clot, and it is measured in seconds)",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-prothrombin-time.aspx"
+        },
+        "lab_inr": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "INR: International Normalized Ratio, used to report blood coagulation test",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-INR.asp"
+        },
+        "lab_albumin": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Albumin measurement: Albumin is a protein made by the liver. Albumin prevents fluid from leaking out of blood vessels into tissues",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-albumin.asp"
+        },
+        "lab_alt": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "ALT: Alanine aminotransferase measurement (liver enzymes)",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-liver-enzymes.asp"
+        },
+        "lab_ast": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "AST: Aspartate aminotransferase measurement (liver enzmes)",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-liver-enzymes.asp"
+        },
+        "lab_alk_phos": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "ALK: Alkaline phosphatase measurement. ALK is an enzyme made in liver cells and bile ducts. The alk phos level is a common test that is usually included when liver tests are performed as a group.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-alkaline-phosphatase.asp"
+        },
+        "lab_t_bili": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Bilirubin (total) measurement, a yellow substance that is part of bile. It is formed when your red blood cells break down. Too much bilirubin in the blood can cause jaundice. There is also a urine test for bilirubin.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-bilirubin.asp"
+        },
+        "lab_direct_bili": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Bilirubin (direct) measurement",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-liver-panel.asp"
+        },
+        "lab_total_prot": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Total Protein: level is a measure of a number of different proteins in the blood. Total protein can be divided into the albumin and globulin fractions.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-total-protein.asp"
+        }
+    },
+    "LABORATORY_OTHER": {
+        "lab_fe": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Fe: Iron analysis a client/patient blood, hair, urine and/or other sample to assess his or her iron levels."
+        },
+        "lab_tibc": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "TIBC: Total iron binding capacity is a blood test to see if you have too much or too little iron in your blood. Iron moves through the blood attached to a protein called transferrin. This test helps your health care provider know how well that protein can carry iron in your blood."
+        },
+        "lab_ferritin": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Ferritin: a protein that stores iron"
+        },
+        "lab_vitamin_d_25_oh": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Vitamin D 25-OH"
+        },
+        "lab_afp": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "AFP:alpha-Fetoproteins. AFP is a protein that is present in patients with liver disease. AFP is also a tumor marker and may be used to see if a patient has liver cancer",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-AFP.asp"
+        },
+        "lab_hiv_ab": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "HIV Ab: antibodies of HIV virus,  produced by certain white blood cells in reaction to contact with HIV, the human immunodeficiency virus",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/coinfection-index.asp"
+        },
+        "lab_hcv_ab": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "HCV Antibody Test used for confirmation diagnosis of HCV infection."
+        },
+        "lab_hcv_genotype": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "Assay for determining the genotype(s) of HCV in plasma or serum from HCV-infected individuals. Six major genotypes are recognized and they vary in their response to treatment.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-hepatitisC-genotype.asp"
+        },
+        "lab_hcv_viral_load": {
+            "tui": "T034",
+            "sty": "Laboratory or Test Result",
+            "codingScheme": "LNC",
+            "text": "The quantitative HCV RNA tests measure the amount of hepatitis C virus in the blood. The result will be an exact number, such as 1,215,422 IU/L.",
+            "reference": "https://www.hepatitis.va.gov/patient/hcv/diagnosis/labtests-viral-load.asp"
+        }
+    },
+    "DIAGNOSTIC_PROCEDURES": {
+        "proc_liver": {
+            "tui": "T060",
+            "sty": "Diagnostic Procedure",
+            "codingScheme": "CPT",
+            "text": "Diagnostic procedures relevant to liver diseases, especially imaging."
+        }
+    }
+}

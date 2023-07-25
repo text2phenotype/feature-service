@@ -1,0 +1,18 @@
+//AGES
+
+#AGE_word
+(?i)\baged?\b
+
+// matches years, YEAR, YEARS, YR, yrs old, of age
+#YEARS_word
+(?i)\d{0,3}\W*?y(ea)?rs?
+
+//Allow for multiple non-numeric/non-alph characters between number and text
+//
+#AGE6
+(?i)\b([0-9]{1,3}[^a-z^A-Z^0-9]+((y(ea)?rs?)|(weeks?)|(days?)|(months?)))
+
+//ex: 77 yo
+//
+#AGE8
+(?i)\W(\d{1,2})\s?Y\.?O

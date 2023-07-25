@@ -1,0 +1,32 @@
+TemporalDocumentLayout::= (range 'document' DocumentTypeClassifier 'date' DateMatch (range 'section' SectionMatch)*)*
+
+TemporalLayout::=(range 'date' DateMatch (range 'section' SectionMatch)*)*
+
+DocumentLayout::= (range 'document' DocumentTypeClassifier (range 'section' SectionMatch)*)*
+
+DocumentTypeClassifier::= range text 'doctype' DocumentType code? score 
+
+SectionizerLayout::= ( SectionMatch | DateMatch | TitleMatch )*
+
+TitleMatch::= range text 'doctype' DocumentType code? MatchType 
+DateMatch::= range text date MatchType
+SectionMatch::= range text SectionContext MatchType
+
+SectionContext::= 'header' STRING 'aspect' AspectType 'person' PersonType 'style' StyleType? 'reltime' RelTimeType? 'doctype' DocumentType* code
+
+AspectType::= ('allergy'|'immunization'|'lab'|'medication'|'procedure'|'diagnosis'|'problem'|'demographics'|'encounter'|'physical_exam'|'treatment'|'social'|'device'|'other')
+StyleType::=('narrative'|'subheading'|'list'|'keyval'|'unique'|'legal')
+RelTimeType::=('history'|'present'|'plan'|'admit'|'discharge'|'transfer')
+PersonType::=('patient'|'family'|'provider')
+MatchType::= ('strict'|'relax'|'multi'|'abbr')
+
+DocumentType::= (CoverSheet | DischargeSummary | HistoryAndPhysical | ProgressNote | ConsultNote | DiagnosticImagingStudy | SurgicalOperationNote | ProcedureNote | Nursing | Pathology)
+
+text::= 'text' STRING
+range::= 'range' INT INT
+date::= 'date' GREGORIAN
+code::= 'code' STRING
+score::= 'score' DECIMAL
+
+
+

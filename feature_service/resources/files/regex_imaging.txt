@@ -1,0 +1,24 @@
+#XRAY
+\bC?XR|x-ray
+
+#EKG
+\bE[KC]G
+
+#MRI
+\bMRI|Magnetic Resonance Imaging
+
+#IMAGING
+imaging
+
+#ECHO
+\becho(cardiogram)?|electrocardiogram
+
+#ECHO_ABBREV
+\b(TTE|ICE|TEE)\b
+
+#CT
+\bCT
+
+#ultrasound
+ultrasound
+

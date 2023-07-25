@@ -1,0 +1,13 @@
+Color|black|melan||melanoma| 
+Color|blue|cyan||cyanocobalamin| 
+Color|gray|poli|||
+Color|green|chlor||chloride|
+Color|purple|porphyr||porphyrins|
+Color|red|erythr||erythrocyte|
+Color|red|rhod||rhodotorula|
+Color|red|cirrh||cirrhosis|
+Color|silver|argent|||
+Color|white|leuc||leucine|
+Color|white|leuk||leukemia|
+Color|white|alb||albumin|
+Color|yellow|xanth|||

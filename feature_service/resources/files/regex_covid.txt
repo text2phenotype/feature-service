@@ -1,0 +1,14 @@
+#SARS
+\bSARS\b
+
+#COVID
+\bcov(id)?\b
+
+#CORONAVIRUS
+\bcoronavirus\b
+
+#TEST_MODIFIERS
+\b(rna)|(naa)|((rt)?pcr)\b
+
+#NEG_TEST_MODIFIERS
+229E|NL63|OC43|HKU1|MERS

@@ -1,0 +1,35 @@
+#PATIENT_NAME
+(?i)(?:(?<=patient's name is )[\w\" ]+)|(?:(?<=patient name is )[\w\" ]+)|(?:(?<=patient's name )(?!is)[\w\" ]+)|(?:(?<=patient name )(?!is)[\w\" ]+)
+
+#MR
+(?i)\bMRS?\b
+
+#ID_I2B2_SMOK_3
+(?i)((?<=TR:)|(?<=TR :)|(?<=TR: )|(?<=TR : ))[A-Za-z0-9]*\b
+
+#SUSPICIOUS_NUM
+\b[0-9]{5,15}\b
+
+#SSN
+\b(?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}\b
+
+#ACCESSION_KP2
+\b(\d{2}-\w\d{4})\b
+
+#RN_KPNW
+\b\w\d{2}-\d{4,6}\b
+
+#MRN_KPNW
+\b\d{4}\s+\d{2}\s+\d{2}\b
+
+#SUSPICIOUS_NUM2
+\b(\d{2,}?)(-\d{3,})+?\b
+
+#ACCESSION_KP
+\b(\w\d{2}-(\d+))\b
+
+#ID_I2B2_SMOK
+\b(\d{3})-(\d{2})-(\d{2})-(\d{1})\b
+
+#ID_I2B2_SMOK_2
+(\d{3})-(\d{2})-(\d{2})-(\d{1})\s+[A-Za-z0-9]{3}\b

@@ -1,0 +1,27 @@
+//ICD-O topography code regexes
+//T describes the size of the original (primary) tumor and whether it has invaded nearby tissue
+#T_MINIMAL
+\bT\s*[0-4]\b
+
+#T_FULL
+\b(AJCC)?[cpyrauP]+T\s*([xX0-4]|(is))[a-z]?\b
+
+#T_OCR_ERROR
+\b[cpyrauP]*?[tT]\s*[Oil][a-z]?\b
+
+//N describes nearby (regional) lymph nodes that are involved
+#N
+\b(AJCC)?[cpyrauAP]*?N\s*[xX0-3][a-z]?\b
+
+#N_OCR_ERROR
+\b(AJCC)?[cpyrauAP]*?N\s*[Oil][a-z]?\b
+
+//M describes distant metastasis
+#M
+\b[cpyrauP]*?M\s*[xX01][a-z]?\b
+
+#M_OCR_ERROR
+\b[cpyrauP]*?M\s*[Oil][a-z]?\b
+
+#FULL
+(?i)\b(AJCC)?P?T[0-4]N[xX0-3O](MX)?\b

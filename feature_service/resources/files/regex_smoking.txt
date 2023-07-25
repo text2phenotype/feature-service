@@ -1,0 +1,20 @@
+#SMOK
+(?i)\bsmok
+
+#CIG
+(?i)\bcig
+
+#TOBAC
+(?i)\btobac
+
+#NONSMOKER
+(?i)\b(non-?smok|(non? smok))
+
+#FORMER_SMOKER
+(?i)\bex-?smok
+
+#NEGATIONS
+(?i)\b((quit|stop)|(discontinue[sd]?))\b
+
+#AMOUNT
+(?i)\dppd

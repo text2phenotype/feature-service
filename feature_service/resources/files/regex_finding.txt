@@ -1,0 +1,14 @@
+#common_finding_type
+\b(opaci[tf]|infiltrate|densit|effusion)
+
+#other_specific
+atelectasis|fibrosis
+
+#pleural
+pleural
+
+#interstitial
+interstitial
+
+#description
+\b(wide|narrow|thick|diffuse|patchy|hazy)

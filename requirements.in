@@ -1,0 +1,22 @@
+# List specific package requirements
+# To create full dependency requirements, compile with:
+#    pip-compile -v requirements.in
+# TODO: create requirements_dev.in/txt for dev environment specific reqs, eg ipython/jupyter/pytest/coverage
+
+connexion[swagger-ui]==2.9.0  # match text2phenotype-py
+elastic-apm[flask]
+fasttext==0.9.2
+gevent==1.5.0
+greenlet==0.4.16  # avoids binary file error in newer versions (eg ~1.1)
+gunicorn~=19.0
+joblib~=1.0.0
+nltk==3.4.5
+numpy==1.18.5  # match biomed
+pandas~=1.1.5  # match text2phenotype-py
+pybind11==2.6.2  # match biomed, from fasttext
+pyyaml==5.2   # explicitly match text2phenotype-py
+requests~=2.26.0  # match text2phenotype-py
+scikit-learn~=0.24.1
+scipy~=1.7.1
+sqlalchemy==1.3.1
+urllib3>=1.25.10  # req from responses, matches text2phenotype-py

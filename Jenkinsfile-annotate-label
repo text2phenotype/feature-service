@@ -1,0 +1,117 @@
+#!/usr/bin/env groovy
+def build_timestamp_tag = env.BUILD_TIMESTAMP_TAG
+
+// These variables come from the build parameters in the Jenkins job
+def FEATURE_SERVICE_BRANCH = FEATURE_SERVICE_BRANCH
+def TEXT2PHENOTYPE_PY_BRANCH = TEXT2PHENOTYPE_PY_BRANCH
+def git_repo = git_repo
+
+pipeline  {
+  agent {
+    kubernetes {
+      cloud 'eks-tools-prod-20191113'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  serviceAccount: nlp-builder
+  serviceAccountName: nlp-builder
+  containers:
+  - name: jenkins-image
+    image: docker.text2phenotype.com/jenkins-image:latest
+    tty: true
+    resources:
+      limits:
+        cpu: 4
+        memory: 8Gi
+      requests:
+        cpu: 2
+        memory: 6Gi
+"""
+    }
+  }
+  options { skipDefaultCheckout() }
+
+  stages {
+    stage('Multiple repo checkout') {
+      steps {
+        checkout([
+          $class: 'GitSCM',
+          branches: [[name: FEATURE_SERVICE_BRANCH ]],
+          doGenerateSubmoduleConfigurations: false,
+          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'feature-service'],[$class: 'GitLFSPull']],
+          submoduleCfg: [],
+          userRemoteConfigs: [[credentialsId: '8fda06db-84a1-4494-b78c-7b0d52d5a9d4',
+                  url: 'git@git.text2phenotype.com:data-management/nlp/feature-service.git']]
+        ])
+        checkout([
+          $class: 'GitSCM',
+          branches: [[name: TEXT2PHENOTYPE_PY_BRANCH ]],
+          doGenerateSubmoduleConfigurations: false,
+          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'text2phenotype-py']],
+          submoduleCfg: [],
+          userRemoteConfigs: [[credentialsId: '8fda06db-84a1-4494-b78c-7b0d52d5a9d4',
+                  url: 'git@git.text2phenotype.com:data-management/nlp/text2phenotype-py.git']]
+        ])
+      }
+    }
+    stage('Annotate and Label Job') {
+      steps {
+        container(name: 'jenkins-image', shell: '/bin/bash') {
+          sh """#!/bin/bash
+          export BUILD_NUMBER=${env.BUILD_NUMBER}
+          export FEATURE_SET_ANNOTATE=${env.FEATURE_SET_ANNOTATE}
+          export FEATURE_SET_VERSION=${env.FEATURE_SET_VERSION}
+          export JOB_METADATA=${env.JOB_METADATA}
+          export UPDATE_ANNOTATIONS=${env.UPDATE_ANNOTATIONS}
+          export MDL_COMN_FDL_ENABLED=${env.MDL_COMN_FDL_ENABLED}
+          export WORKSPACE=${env.WORKSPACE}
+
+          export PIP_CONFIG_FILE="$WORKSPACE/biomed/bin/pip.conf"
+
+          export MDL_BIOM_DATA_ROOT="${WORKSPACE}/biomed-data"
+          export MDL_COMN_DATA_ROOT="\$MDL_BIOM_DATA_ROOT"
+          export MDL_COMN_HUMAN_READABLE_LOGS=true
+          export MDL_COMN_STORAGE_CONTAINER_NAME=biomed-data
+          export MDL_COMN_USE_STORAGE_SVC=True
+          export MDL_FEAT_UMLS_REQUEST_MODE=false
+
+          # External Server dependencies
+          export MDL_COMN_BIOMED_API_BASE="https://biomed-dev-nlp-ci.mdl-dev.in"
+          export MDL_FEAT_API_BASE="https://feature-service-dev-nlp-ci.mdl-dev.in"
+          export MDL_FEAT_UMLS_HOST="https://ctakes-dev-nlp-ci.mdl-dev.in/nlp/rest"
+
+          mkdir -p "\$MDL_BIOM_DATA_ROOT"
+
+          # Feature service
+          cd $WORKSPACE/feature-service
+          virtualenv -p python3 venv
+          source venv/bin/activate
+          venv/bin/pip install ../text2phenotype-py
+          venv/bin/pip install .
+          venv/bin/python3 nltk_download.py
+          echo ">> Starting Annotate/Label job..."
+          venv/bin/python3 execute_job.py -job_id "${env.BUILD_NUMBER}" -feature_set_annotate "$FEATURE_SET_ANNOTATE" -feature_set_version "$FEATURE_SET_VERSION" -job_metadata $JOB_METADATA -update_annotation "$UPDATE_ANNOTATIONS"
+          RET_VAL="\$?"
+          echo ">> Finished Annotate/Label job..."
+          exit \$RET_VAL
+          """
+        }
+      }
+    }
+  }
+  post {
+    success {
+      addGitLabMRComment comment: 'Pipeline ran successfully'
+      updateGitlabCommitStatus name: 'Pipeline ran successfully', state: 'success'
+    }
+    aborted {
+      addGitLabMRComment comment: 'Pipeline has been aborted'
+      updateGitlabCommitStatus name: 'Pipeline has been aborted', state: 'canceled'
+    }
+    failure {
+      addGitLabMRComment comment: 'Pipeline has failed'
+      updateGitlabCommitStatus name: 'Pipeline has been failed', state: 'failed'
+    }
+  }
+}

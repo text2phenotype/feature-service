@@ -1,0 +1,121 @@
+{
+	"jira": "BIOMED/versions/11243",
+	"user": "Mike Banos (mike.banos)",
+	"timestamp": "1561662734000",
+	"date": "2019-06-27",
+	"version": "Version 1.2.1 ECHO HepC",
+	"docId": "19d23766-398f-4efa-a08c-44ec06e349a6",
+	"dob": null,
+	"gender": null,
+	"age": null,
+  	"content": [
+		{
+			"id": null,
+			"sentence": [
+				0,
+				17
+			],
+			"sectionOffset": [
+				0,
+				17
+			],
+			"text": [
+				"aminobenzoic acid",
+				0,
+				17
+			],
+			"sectionOid": "SIMPLE_SEGMENT",
+			"attributes": {
+				"polarity": "positive"
+			},
+			"aspect": "device",
+			"name": "MedicationMention",
+			"umlsConcept": [
+				{
+					"code": "D010129",
+					"tui": [
+						"T109",
+						"T121",
+						"T127"
+					],
+					"tty": ["IN", "SY"],
+					"codingScheme": "MSH",
+					"cui": "C0000473",
+					"preferredText": "4-Aminobenzoic Acid"
+				},
+				{
+					"code": "39707000",
+					"tui": [
+						"T109",
+						"T121",
+						"T127"
+					],
+					"tty": ["IN","SY"],
+					"codingScheme": "SNOMEDCT_US",
+					"cui": "C0000473",
+					"preferredText": "4-Aminobenzoic Acid"
+				},
+				{
+					"code": "373489001",
+					"tui": [
+						"T109",
+						"T121",
+						"T127"
+					],
+					"tty": ["IN", "SY"],
+					"codingScheme": "SNOMEDCT_US",
+					"cui": "C0000473",
+					"preferredText": "4-Aminobenzoic Acid"
+				},
+				{
+					"code": "C61634",
+					"tui": [
+						"T109",
+						"T121",
+						"T127"
+					],
+					"tty": ["IN","SY"],
+					"codingScheme": "NCI",
+					"cui": "C0000473",
+					"preferredText": "4-Aminobenzoic Acid"
+				},
+				{
+					"code": "U002135",
+					"tui": [
+						"T109",
+						"T121",
+						"T127"
+					],
+					"tty":[ "IN","SY"],
+					"codingScheme": "MTH",
+					"cui": "C0000473",
+					"preferredText": "4-Aminobenzoic Acid"
+				},
+				{
+					"code": "N0000006481",
+					"tui": [
+						"T109",
+						"T121",
+						"T127"
+					],
+					"tty": ["IN","SY"],
+					"codingScheme": "NDFRT",
+					"cui": "C0000473",
+					"preferredText": "4-Aminobenzoic Acid"
+				},
+				{
+					"code": "N0000147349",
+					"tui": [
+						"T109",
+						"T121",
+						"T127"
+					],
+					"tty": ["IN","SY"],
+					"codingScheme": "NDFRT",
+					"cui": "C0000473",
+					"preferredText": "4-Aminobenzoic Acid"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,11 @@
+//ICD-O topography code regexes
+//https://apps.who.int/iris/bitstream/handle/10665/96612/9789241548496_eng.pdf
+// "These  topography  terms  have  four-character  codes  that  run  from C00.0  to  C80.9."
+#EXPECTED_FORMAT
+\bC[0-8]\d\.\d\b
+
+#OCR_ERRORS1
+\bC[0-8I][\dI]\.[\dI]\b
+
+#OCR_ERRORS2
+[\W\b]\([0-8I][\dI]\.[\dI]\b
